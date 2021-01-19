@@ -5,7 +5,7 @@ muscle_names = ["GM", "Sol", "TA1", "TA2"];
 degrees = ["0", "10", "-5", "20"];
 
 MVC = zeros(1,3);
-m = 0;
+m = 0;StrName = strings(3,1);
 for i=1:length(muscle_names)
     for j=1:length(degrees)
         filename = strcat(subfolder, 'SC', subject, '_MVC35_', degrees(j), 'deg_', muscle_names(i), '_Filtered');
@@ -14,10 +14,10 @@ for i=1:length(muscle_names)
             m = max(f.EMG_filtered(:,column));
             if m > MVC(column)
                 MVC(column) = m;
-                
+                StrName(column)=filename;
             end
         end
     end
 end
 
-%save(strcat('SC',subject,'_MVC'), 'MVC');
+save(strcat('SC',subject,'_MVC'), 'MVC','StrName');
