@@ -17,7 +17,7 @@ function [emg4] = Filter_function(filename, data, plot_bool)
         
         % Apply nth order, 0-lag, Butterworth low-pass filter
         order = 6;
-        [b,a] = butter(order,20/fn);
+        [b,a] = butter(order,6/fn);
         emg4(:,i) = filtfilt(b,a,emg3(:,i));
         
         % Plot emg
@@ -51,5 +51,6 @@ function [emg4] = Filter_function(filename, data, plot_bool)
     end
     if plot_bool == 1
         saveas(gcf, fullfile('./Output Data/Filtered EMG/', strcat(filename,'_Filter')), 'fig');
+        saveas(gca, fullfile('./Output Data/Filtered EMG/', strcat(filename,'_Filter')), 'jpg');
     end
 end
