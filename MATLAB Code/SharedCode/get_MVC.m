@@ -20,4 +20,4 @@ for i=1:length(muscle_names)
     end
 end
 
-%save(strcat('SC',subject,'_MVC'), 'MVC');
+save(strcat('SC',subject,'_MVC'), 'MVC','StrName');
